@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http:www.thymeleaf.org">
+<head>
+	<meta charset="'ISO-8859-1">
+	<title>Student Management System</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<!--its use to apply bootstrp properties  -->
+	
+</head>
+<body>
+	<!--here i copy some code line <nav>-->
+	<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+	    <!-- Brand -->
+	    <a class="navbar-brand" href="#">Student Management System</a>
+
+	    <!-- Toggler/collapsible Button -->
+	    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+	        <span class="navbar-toggler-icon"></span>
+	    </button>
+
+	    <!-- Navbar links -->
+	    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+	        <ul class="navbar-nav">
+	            <li class="nav-item"><a class="nav-link" th:href="@{students}">Student Management</a></li>
+	        </ul>
+	    </div>
+	</nav>
+
+<div class ="container">
+	<div class ="text-center"><h2>Student List</h2></div>
+	<div class="rows">
+		
+		<div class="col-lg-3">
+			
+			<a th:href="@{students/new}" class="btn btn-primary btn-sm-mb-3">Add Students</a>
+		</div>
+	</div>
+</div>
+	
+	
+	
+	<!--<h2 class=" text-center"> Students List</h2>-->
+	
+	<style>
+	  thead {
+	    background-color: #3a7851; /* Rama green shade */
+	    color: white; /* Text color for better contrast */
+	  }
+	</style>
+
+	
+	
+	<table class ="table table-striped table-bordered ">
+		<thead>
+			<tr>
+				<th>First Name</th>
+				<th> Last Name</th>
+				<th> Email</th>
+				<th>Action</th>
+				
+
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="student:${students}">
+				<td th:text ="${student.firstName}"></td>
+				<td th:text ="${student.lastName}"></td>
+				<td th:text ="${student.email}"></td>
+                
+				<td>
+					<a th:href="@{students/edit/{id} (id=${student.id})}"class="btn btn-info">Update</a>
+					
+				<a th:href="@{students/{id} (id=${student.id})}"class="btn btn-danger">Delete</a>
+			</td>
+			
+					
+			
+			
+			
+			
+			
+			
+			
+			
+
+			 </tr>
+<!--student ki jgh kuchh bhi likh lo its just a object name but students is same key which is written in controller service as well
+td is table data, write here variable name 
+he students list with the loop variable named student-->
+		</tbody>
+	</table>
+</body>
+</html>
